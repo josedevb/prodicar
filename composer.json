@@ -1,0 +1,23 @@
+{
+    "require": {
+        "paypal/rest-api-sdk-php": "*",
+        "phpmailer/phpmailer": "^5.2"
+    }
+}
+{
+  "require": {
+    "khipu/khipu-api-client": "2.7.0"
+}
+}
+
+2
+3
+4
+5
+6
+{
+    "require": {
+        "unodepiera/phalcon_cart": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

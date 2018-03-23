@@ -1,0 +1,16 @@
+[23-Jan-2018 12:40:19 UTC] PHP Warning:  require(core/bin/functions/Encrypt.php): failed to open stream: No such file or directory in /home/ticket3/public_html/tesis/core/core.php on line 29
+[23-Jan-2018 12:40:19 UTC] PHP Fatal error:  require(): Failed opening required 'core/bin/functions/Encrypt.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ticket3/public_html/tesis/core/core.php on line 29
+[23-Jan-2018 20:24:10 UTC] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/ticket3/public_html/tesis/core/models/class.Conexion.php on line 6
+[23-Jan-2018 20:24:10 UTC] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/ticket3/public_html/tesis/core/models/class.Conexion.php on line 6
+[26-Jan-2018 12:11:06 UTC] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/ticket3/public_html/tesis/core/models/class.Conexion.php on line 6
+[26-Jan-2018 12:11:38 UTC] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/ticket3/public_html/tesis/core/models/class.Conexion.php on line 6
+[26-Jan-2018 12:11:39 UTC] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/ticket3/public_html/tesis/core/models/class.Conexion.php on line 6
+[26-Jan-2018 12:12:44 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; FPDF has a deprecated constructor in /home/ticket3/public_html/tesis/fpdf/fpdf.php on line 12
+[26-Jan-2018 12:12:44 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/ticket3/public_html/tesis/reporteCasaitaliana.php on line 6
+[26-Jan-2018 12:12:44 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/ticket3/public_html/tesis/reporteCasaitaliana.php on line 7
+[26-Jan-2018 12:16:07 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; FPDF has a deprecated constructor in /home/ticket3/public_html/tesis/fpdf/fpdf.php on line 12
+[26-Jan-2018 12:16:07 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/ticket3/public_html/tesis/reporteCasaitaliana.php on line 6
+[26-Jan-2018 12:16:07 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/ticket3/public_html/tesis/reporteCasaitaliana.php on line 7
+[26-Jan-2018 13:24:31 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; FPDF has a deprecated constructor in /home/ticket3/public_html/tesis/fpdf/fpdf.php on line 12
+[26-Jan-2018 13:24:39 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; FPDF has a deprecated constructor in /home/ticket3/public_html/tesis/fpdf/fpdf.php on line 12
+[26-Jan-2018 13:25:18 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; FPDF has a deprecated constructor in /home/ticket3/public_html/tesis/fpdf/fpdf.php on line 12

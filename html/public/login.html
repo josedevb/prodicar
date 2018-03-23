@@ -1,0 +1,36 @@
+<div class="modal fade" id="Login" role="dialog">
+   <div class="modal-dialog">
+     <div class="modal-content">
+
+       <div id="_AJAX_LOGIN_"></div>
+
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"><i class="material-icons">clear</i></button>
+         <center><h4 style="color:red;"><i class="material-icons">account_circle</i> Iniciar Sesión</h4></center>
+       </div>
+       <div class="modal-body">
+         <div role="form" onkeypress="return runScriptLogin(event)">
+           <div class="form-group">
+             <label for="usrname_or_email"><i class="material-icons">group</i> Usuario o Email</label>
+             <input type="text" class="form-control" id="user_login" placeholder="Introducir Email">
+           </div>
+           <div class="form-group">
+             <label for="psw"><i class="material-icons">lock</i> Contraseña</label>
+             <input type="password" class="form-control" id="pass_login" placeholder="Introducir Contraseña">
+           </div>
+           <br><br>
+           <div class="">
+             <label><input type="checkbox" value="1" id="session_login" checked>Recordarme</label>
+           </div><br><br>
+           <button type="button" class="btn btn-default btn-success btn-block" id="boton" onclick="goLogin()"><i class="material-icons">done_all</i> Iniciar Sesión</button>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <p style="color:#506a85" >¿No estás registrado? <a data-toggle="modal" data-target="#Registro">Registrate!</a></p>
+         <p style="color:#506a85" >Contraseña <a data-toggle="modal" data-target="#Lostpass">perdida?</a></p>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <script src="views/app/js/login.js"></script>

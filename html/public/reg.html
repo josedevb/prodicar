@@ -1,0 +1,44 @@
+<div class="modal fade" id="Registro" role="dialog">
+   <div class="modal-dialog">
+     <div class="modal-content">
+
+       <div id="_AJAX_REG_"></div>
+
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"><i class="material-icons">clear</i></button>
+         <h4 style="color:red;"><i class="material-icons">add</i> Registro</h4>
+       </div>
+       <div class="modal-body">
+         <div role="form" onkeypress="return runScriptReg(event)">
+           <div class="form-group label-floating">
+             <label for="usrname"><i class="material-icons">group</i> Usuario</label>
+             <input type="text" class="form-control" id="user_reg" placeholder="Introduce un nombre de usuario">
+           </div>
+           <div class="form-group">
+             <label for="usrname"><i class="material-icons">contact_mail</i> Email</label>
+             <input type="email" class="form-control" id="email_reg" placeholder="Introduce tu correo electrónico">
+           </div>
+           <div class="form-group">
+             <label for="psw"><i class="material-icons">lock</i> Contraseña</label>
+             <input type="password" class="form-control" id="pass_reg" placeholder="Introduce tu contraseña">
+           </div>
+           <div class="form-group">
+             <label for="psw_two"><i class="material-icons">lock</i> Repite tu Contraseña</label>
+             <input type="password" class="form-control" id="pass_reg_dos" placeholder="Introduce tu contraseña de nuevo">
+           </div>
+           <br><br>
+           <div class="">
+             <label><input type="checkbox" id="tyc_reg" value="1" checked>Acepto los T&C</label>
+           </div>
+           <button type="button" onclick="goReg()" class="btn btn-default btn-success btn-block"><i class="material-icons">send</i> Registrarme</button>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <p style="color:#506a85" >¿Ya estás registrado? <a data-toggle="modal" data-target="#Login">Inicia Sesión!</a></p>
+         <p style="color:#506a85" >Contraseña <a data-toggle="modal" data-target="#Lostpass">perdida?</a></p>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <script src="views/app/js/reg.js"></script>
