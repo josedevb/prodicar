@@ -1,7 +1,6 @@
 <?php
 require('fpdf/fpdf.php');
 require('core/core.php');
-$usuario = $_SESSION['app_id'];
 
 $conexion=mysqli_connect("localhost","tesis_charcuteri","tesis_tesis","ocrendbb");
 $registros=mysqli_query($conexion,"select datospersonales.*,users.*,factura.*,catepizz.* from datospersonales inner join users on datospersonales.iduser = users.iduser inner join factura on users.iduser = factura.iduser inner join catepizz on factura.idfact = catepizz.idfact where users.iduser = $usuario")

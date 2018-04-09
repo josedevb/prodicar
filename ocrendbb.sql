@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2016 a las 07:17:36
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Tiempo de generación: 09-04-2018 a las 05:12:59
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,12 +41,26 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idcate`, `nombre`, `contiene`, `descripcion`, `imagen`) VALUES
-(1, 'Napoli', 'Nuestra pizza Napoli contiene: borde de queso, queso fundido, salsa roja y especias.', 'Perfecta para los amantes de la pizza tradicional.', 'views/images/napoli.jpg'),
-(2, 'Jamón y queso', 'Nuestra pizza Jamón y Queso contiene: borde de queso, jamón, queso fundido, maíz, y especias.', 'Jamón Importado de la mas alta calidad para el gusto en general.', 'views/images/jamon.jpg'),
-(3, '4 estaciones', 'Nuestra pizza 4 Estaciones contiene: aceitunas negras, maiz, queso fundido, champiñones y jamón.', 'Un clima de sabores en tu paladar.', 'views/images/4esta.jpg'),
-(4, 'Hawaiana', 'Nuestra pizza Hawaiana contiene: Piña, jamón, queso fundido, y especias.', 'Una combinación tropical de frutas y contornos hechos para ti.', 'views/images/hawaina.jpg'),
-(5, 'Vegetariana', 'Nuestra pizza Vegetariana contiene: Tomate, cebolla, aceitunas negras, pepinillos, queso fundido, y especias.', 'Vegetales frescos y 100% limpios para tu degustación.', 'views/images/vegeta.jpg'),
-(6, 'Primavera', 'Nuestra pizza Primavera contiene: Tocineta, maiz, queso fundido, y jamón.', 'El mejor tocino importado de la ciudad, liberado de gérmenes', 'views/images/prima.jpg');
+(1, 'Pulpón', 'Deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg'),
+(2, 'Pelota', 'Prueba el mejor corte de pelota', 'RES - Pelota', 'views/images/pelota.jpg'),
+(3, 'Lomito', 'Prueba el mejor lomito', 'RES - Lomito', 'views/images/lomito.jpg'),
+(4, 'Lomo de aguja', 'Deleitate con el mejor lomo de aguja', 'RES - Lomo de aguja', 'views/images/lomo_aguja.jpg'),
+(5, 'Punta trasera', 'Deleitate con el mejor corte de punta traser', 'RES - Corte de primera', 'views/images/punta_trasera.jpg'),
+(6, 'Balona', 'Corte e segunda balona', 'RES - Balona', 'views/images/balona.jpg'),
+(7, 'Falda', 'Corte de segunda Res', 'RES - falda', 'views/images/falda.jpg'),
+(8, 'Pollito de res', 'El mejor pollo de res', 'RES - Corte de res de segunda', 'views/images/pollito_res.jpg'),
+(9, 'Osobuco', 'El mejor osobuco', 'Corte de tercera', 'views/images/osobuco.jpg'),
+(10, 'Costilla', 'Corte de tercera costilla', 'RES - Costilla', 'views/images/costilla.jpg'),
+(11, 'Huesos rojos', 'Lo mejor en huesos rojos', 'RES - Corte de tercera', 'views/images/huesos_rojos.jpg'),
+(12, 'Rabo de res', 'Lo mejor en rabo de res', 'RES - Corte de tercera', 'views/images/rabo_res.jpg'),
+(13, 'Costillas de cerdo', 'Lo mejor en costillas de cerdo', 'Cerdo', 'views/images/costilla_cerdo.jpg'),
+(14, 'Lomo', 'El mejor lomo de cerdo', 'Lomo de cerdo', 'views/images/lomo.jpg'),
+(15, 'Pernil', 'El mejor pernil de cerdo', 'Pernil de cerdo', 'views/images/pernil.jpg'),
+(16, 'Chuleta', 'Lo mejor en chuleta de cerdo', 'Corte de cerdo - Chuleta', 'views/images/chuletas.jpg'),
+(17, 'Pollo entero', 'El mejor pollo entero', 'Pollo entero', 'views/images/pollo_entero.jpg'),
+(18, 'Muslos', 'EL mejor muslo de pollo', 'Pollo - Muslo', 'views/images/muslos.jpg'),
+(19, 'Pechugas', 'Las mejores pechugas', 'Pechugas - Pollo', 'views/images/pechugas.jpg'),
+(20, 'Alitas', 'Lo mejor en alitas de pollo', 'Pollo - Alitas', 'views/images/alitas.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,6 +100,7 @@ CREATE TABLE `datospersonales` (
   `direccion` varchar(120) NOT NULL,
   `numero` varchar(11) NOT NULL,
   `informacion` varchar(180) NOT NULL,
+  `razon_social` varchar(100) NOT NULL,
   `iduser` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,7 +146,7 @@ INSERT INTO `ingrediente` (`idingre`, `nombre`, `costo`) VALUES
 
 CREATE TABLE `pizzatam` (
   `idtama` bigint(255) UNSIGNED NOT NULL,
-  `size` varchar(10) NOT NULL,
+  `size` varchar(50) NOT NULL,
   `precio` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -138,9 +155,9 @@ CREATE TABLE `pizzatam` (
 --
 
 INSERT INTO `pizzatam` (`idtama`, `size`, `precio`) VALUES
-(1, 'Familiar', '5000'),
-(2, 'Mediana', '4000'),
-(3, 'Pequeña', '3000');
+(1, 'Corte de primera', '5000'),
+(2, 'Corte de segunda', '4000'),
+(3, 'Corte de tercera', '3000');
 
 -- --------------------------------------------------------
 
@@ -161,6 +178,13 @@ CREATE TABLE `users` (
   `ultima_conexion` int(32) NOT NULL DEFAULT '0',
   `no_leidos` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`iduser`, `user`, `pass`, `email`, `permisos`, `activo`, `keyreg`, `keypass`, `new_pass`, `ultima_conexion`, `no_leidos`) VALUES
+(1, 'jozekcore', '09e1d9410d7b09074aa53e1b49841181', 'josedbarrios7@gmail.com', 0, 1, '9831b4e9020c4ff4955fa84a0b6d6472', '', '', 0, '');
 
 --
 -- Índices para tablas volcadas
@@ -222,42 +246,51 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idcate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idcate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT de la tabla `catepizz`
 --
 ALTER TABLE `catepizz`
   MODIFY `idcatepizz` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `costo`
 --
 ALTER TABLE `costo`
   MODIFY `idcosto` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `datospersonales`
 --
 ALTER TABLE `datospersonales`
   MODIFY `iddatosp` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
   MODIFY `idfact` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `ingrediente`
 --
 ALTER TABLE `ingrediente`
   MODIFY `idingre` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT de la tabla `pizzatam`
 --
 ALTER TABLE `pizzatam`
   MODIFY `idtama` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `iduser` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `iduser` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

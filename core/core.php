@@ -7,8 +7,8 @@ session_start();
 
 #Constantes de conexión
 define('DB_HOST','localhost');
-define('DB_USER','tesis_charcuteri');
-define('DB_PASS','tesis_tesis');
+define('DB_USER','root');
+define('DB_PASS','');
 define('DB_NAME','ocrendbb');
 
 #Constantes de la APP
