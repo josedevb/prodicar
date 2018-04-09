@@ -120,10 +120,17 @@
 																																						</div>
 
 																																						<div class="form-group form-md-line-input">
-																																								<input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo $_users2[$_GET['id']]['apellido']; ?>">
-																																								<label for="apellido">Apellido
-																																								</label>
-																																								<span class="help-block"></span>
+                                                                              <input type="text" class="form-control" name="apellido" id="apellido" value="<?php echo $_users2[$_GET['id']]['apellido']; ?>">
+                                                                              <label for="apellido">Apellido
+                                                                              </label>
+                                                                              <span class="help-block"></span>
+																																						</div>
+
+                                                                            <div class="form-group form-md-line-input">
+                                                                              <input type="text" class="form-control" name="razon_social" id="razon_social" value="<?php echo $_users2[$_GET['id']]['razon_social']; ?>">
+                                                                              <label for="razon-social">Razón social
+                                                                              </label>
+                                                                              <span class="help-block"></span>
 																																						</div>
 
 																																						<div class="form-group form-md-line-input form-md-floating-label">

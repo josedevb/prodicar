@@ -11,6 +11,7 @@ class DatosPersonales {
   private $direccion;
   private $numero;
   private $informacion;
+  private $razon_social;
   private $pass;
 
   public function __construct() {
@@ -27,6 +28,7 @@ class DatosPersonales {
         $this->direccion = $this->db->real_escape_string($_POST['direccion']);
         $this->numero = $this->db->real_escape_string($_POST['numero']);
         $this->informacion = $this->db->real_escape_string($_POST['informacion']);
+        $this->razon_social = $this->db->real_escape_string($_POST['razon_social']);
         $this->pass = $this->db->real_escape_string($_POST['pass']);
       }
     } catch(Exception $error) {
@@ -44,6 +46,7 @@ class DatosPersonales {
     $this->db->query("UPDATE datospersonales SET direccion='$this->direccion' WHERE iduser='$this->id';");
     $this->db->query("UPDATE datospersonales SET numero='$this->numero' WHERE iduser='$this->id';");
     $this->db->query("UPDATE datospersonales SET informacion='$this->informacion' WHERE iduser='$this->id';");
+    $this->db->query("UPDATE datospersonales SET razon_social='$this->razon_social' WHERE iduser='$this->id';");
     $this->db->query("UPDATE datospersonales SET iduser='$this->id' WHERE iduser='$this->id';");
     header('location: ?view=perfil&mode=edit&id='.$this->id.'&success=true');
   }

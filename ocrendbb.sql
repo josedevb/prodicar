@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-04-2018 a las 05:12:59
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.3
+-- Servidor: localhost
+-- Tiempo de generación: 09-04-2018 a las 21:33:30
+-- Versión del servidor: 10.1.30-MariaDB
+-- Versión de PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,34 +33,35 @@ CREATE TABLE `categorias` (
   `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `contiene` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `descripcion` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `imagen` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `imagen` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `idprecio` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`idcate`, `nombre`, `contiene`, `descripcion`, `imagen`) VALUES
-(1, 'Pulpón', 'Deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg'),
-(2, 'Pelota', 'Prueba el mejor corte de pelota', 'RES - Pelota', 'views/images/pelota.jpg'),
-(3, 'Lomito', 'Prueba el mejor lomito', 'RES - Lomito', 'views/images/lomito.jpg'),
-(4, 'Lomo de aguja', 'Deleitate con el mejor lomo de aguja', 'RES - Lomo de aguja', 'views/images/lomo_aguja.jpg'),
-(5, 'Punta trasera', 'Deleitate con el mejor corte de punta traser', 'RES - Corte de primera', 'views/images/punta_trasera.jpg'),
-(6, 'Balona', 'Corte e segunda balona', 'RES - Balona', 'views/images/balona.jpg'),
-(7, 'Falda', 'Corte de segunda Res', 'RES - falda', 'views/images/falda.jpg'),
-(8, 'Pollito de res', 'El mejor pollo de res', 'RES - Corte de res de segunda', 'views/images/pollito_res.jpg'),
-(9, 'Osobuco', 'El mejor osobuco', 'Corte de tercera', 'views/images/osobuco.jpg'),
-(10, 'Costilla', 'Corte de tercera costilla', 'RES - Costilla', 'views/images/costilla.jpg'),
-(11, 'Huesos rojos', 'Lo mejor en huesos rojos', 'RES - Corte de tercera', 'views/images/huesos_rojos.jpg'),
-(12, 'Rabo de res', 'Lo mejor en rabo de res', 'RES - Corte de tercera', 'views/images/rabo_res.jpg'),
-(13, 'Costillas de cerdo', 'Lo mejor en costillas de cerdo', 'Cerdo', 'views/images/costilla_cerdo.jpg'),
-(14, 'Lomo', 'El mejor lomo de cerdo', 'Lomo de cerdo', 'views/images/lomo.jpg'),
-(15, 'Pernil', 'El mejor pernil de cerdo', 'Pernil de cerdo', 'views/images/pernil.jpg'),
-(16, 'Chuleta', 'Lo mejor en chuleta de cerdo', 'Corte de cerdo - Chuleta', 'views/images/chuletas.jpg'),
-(17, 'Pollo entero', 'El mejor pollo entero', 'Pollo entero', 'views/images/pollo_entero.jpg'),
-(18, 'Muslos', 'EL mejor muslo de pollo', 'Pollo - Muslo', 'views/images/muslos.jpg'),
-(19, 'Pechugas', 'Las mejores pechugas', 'Pechugas - Pollo', 'views/images/pechugas.jpg'),
-(20, 'Alitas', 'Lo mejor en alitas de pollo', 'Pollo - Alitas', 'views/images/alitas.jpg');
+INSERT INTO `categorias` (`idcate`, `nombre`, `contiene`, `descripcion`, `imagen`, `idprecio`) VALUES
+(1, 'Pulpón', 'Deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg', 0),
+(2, 'Pelota', 'Prueba el mejor corte de pelota', 'RES - Pelota', 'views/images/pelota.jpg', 0),
+(3, 'Lomito', 'Prueba el mejor lomito', 'RES - Lomito', 'views/images/lomito.jpg', 0),
+(4, 'Lomo de aguja', 'Deleitate con el mejor lomo de aguja', 'RES - Lomo de aguja', 'views/images/lomo_aguja.jpg', 0),
+(5, 'Punta trasera', 'Deleitate con el mejor corte de punta traser', 'RES - Corte de primera', 'views/images/punta_trasera.jpg', 0),
+(6, 'Balona', 'Corte e segunda balona', 'RES - Balona', 'views/images/balona.jpg', 0),
+(7, 'Falda', 'Corte de segunda Res', 'RES - falda', 'views/images/falda.jpg', 0),
+(8, 'Pollito de res', 'El mejor pollo de res', 'RES - Corte de res de segunda', 'views/images/pollito_res.jpg', 0),
+(9, 'Osobuco', 'El mejor osobuco', 'Corte de tercera', 'views/images/osobuco.jpg', 0),
+(10, 'Costilla', 'Corte de tercera costilla', 'RES - Costilla', 'views/images/costilla.jpg', 0),
+(11, 'Huesos rojos', 'Lo mejor en huesos rojos', 'RES - Corte de tercera', 'views/images/huesos_rojos.jpg', 0),
+(12, 'Rabo de res', 'Lo mejor en rabo de res', 'RES - Corte de tercera', 'views/images/rabo_res.jpg', 0),
+(13, 'Costillas de cerdo', 'Lo mejor en costillas de cerdo', 'Cerdo', 'views/images/costilla_cerdo.jpg', 0),
+(14, 'Lomo', 'El mejor lomo de cerdo', 'Lomo de cerdo', 'views/images/lomo.jpg', 0),
+(15, 'Pernil', 'El mejor pernil de cerdo', 'Pernil de cerdo', 'views/images/pernil.jpg', 0),
+(16, 'Chuleta', 'Lo mejor en chuleta de cerdo', 'Corte de cerdo - Chuleta', 'views/images/chuletas.jpg', 0),
+(17, 'Pollo entero', 'El mejor pollo entero', 'Pollo entero', 'views/images/pollo_entero.jpg', 0),
+(18, 'Muslos', 'EL mejor muslo de pollo', 'Pollo - Muslo', 'views/images/muslos.jpg', 0),
+(19, 'Pechugas', 'Las mejores pechugas', 'Pechugas - Pollo', 'views/images/pechugas.jpg', 0),
+(20, 'Alitas', 'Lo mejor en alitas de pollo', 'Pollo - Alitas', 'views/images/alitas.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -103,6 +104,13 @@ CREATE TABLE `datospersonales` (
   `razon_social` varchar(100) NOT NULL,
   `iduser` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datospersonales`
+--
+
+INSERT INTO `datospersonales` (`iddatosp`, `nombre`, `apellido`, `direccion`, `numero`, `informacion`, `razon_social`, `iduser`) VALUES
+(1, 'Jose', 'Barrios', 'Haticos por arriba sector el potente', '04266419051', 'Administrador de Gustock', 'Gustock', 1);
 
 -- --------------------------------------------------------
 
@@ -158,6 +166,19 @@ INSERT INTO `pizzatam` (`idtama`, `size`, `precio`) VALUES
 (1, 'Corte de primera', '5000'),
 (2, 'Corte de segunda', '4000'),
 (3, 'Corte de tercera', '3000');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `precio`
+--
+
+CREATE TABLE `precio` (
+  `idprecio` int(50) NOT NULL,
+  `tipo` varchar(50) NOT NULL,
+  `corte` varchar(50) NOT NULL,
+  `precio` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -233,6 +254,12 @@ ALTER TABLE `pizzatam`
   ADD PRIMARY KEY (`idtama`);
 
 --
+-- Indices de la tabla `precio`
+--
+ALTER TABLE `precio`
+  ADD PRIMARY KEY (`idprecio`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -264,7 +291,7 @@ ALTER TABLE `costo`
 -- AUTO_INCREMENT de la tabla `datospersonales`
 --
 ALTER TABLE `datospersonales`
-  MODIFY `iddatosp` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `iddatosp` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
@@ -283,6 +310,12 @@ ALTER TABLE `ingrediente`
 --
 ALTER TABLE `pizzatam`
   MODIFY `idtama` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `precio`
+--
+ALTER TABLE `precio`
+  MODIFY `idprecio` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

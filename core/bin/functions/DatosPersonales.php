@@ -12,6 +12,7 @@ function DatosPersonales() {
         'direccion' => $d['direccion'],
         'numero' => $d['numero'],
         'informacion' => $d['informacion'],
+        'razon_social' => $d['razon_social'],
         'iduser' => $d['iduser']
       );
     }

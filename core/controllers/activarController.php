@@ -7,7 +7,7 @@ if(isset($_GET['key'],$_SESSION['app_id'])) {
   $sql = $db->query("SELECT iduser FROM users WHERE iduser='$id' AND keyreg='$key' LIMIT 1;");
   if($db->rows($sql) > 0) {
     $db->query("UPDATE users SET activo='1', keyreg='' WHERE iduser='$id';");
-    $db->query("INSERT INTO datospersonales (iddatosp,nombre,apellido,direccion,numero,informacion,iduser) VALUES (null,'$nombre','$apellido','$direccion','$numero','$informacion','$id');");
+    $db->query("INSERT INTO datospersonales (iddatosp,nombre,apellido,direccion,numero,informacion,razon_social,iduser) VALUES (null,'$nombre','$apellido','$direccion','$numero','$informacion','$razon_social','$id');");
     header('location: ?view=index&success=true');
   } else {
     header('location: ?view=index&error=true');

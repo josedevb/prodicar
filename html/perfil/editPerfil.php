@@ -4,7 +4,7 @@
 <html lang="en">
  <head>
    <meta charset="utf-8" />
-   <title>Casa Italiana | Perfil De Usuario</title>
+   <title>Perfil De Usuario</title>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta content="width=device-width, initial-scale=1" name="viewport" />
    <meta content="" name="description" />
@@ -138,6 +138,13 @@
                                                                                         <label for="apellido">Apellido
                                                                                         </label>
                                                                                         <span class="help-block"></span>
+                                                                                    </div>
+
+                                                                                    <div class="form-group form-md-line-input">
+                                                                                      <input type="text" class="form-control" name="razon_social" id="razon_social" value="<?php echo $_users2[$_GET['id']]['razon_social']; ?>">
+                                                                                      <label for="razon-social">Razón social
+                                                                                      </label>
+                                                                                      <span class="help-block"></span>
                                                                                     </div>
 
                                                                                     <div class="form-group form-md-line-input form-md-floating-label">
