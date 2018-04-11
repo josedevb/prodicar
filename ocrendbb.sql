@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 09-04-2018 a las 21:33:30
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.2
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 11-04-2018 a las 14:36:40
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,26 +42,26 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idcate`, `nombre`, `contiene`, `descripcion`, `imagen`, `idprecio`) VALUES
-(1, 'Pulpón', 'Deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg', 0),
-(2, 'Pelota', 'Prueba el mejor corte de pelota', 'RES - Pelota', 'views/images/pelota.jpg', 0),
-(3, 'Lomito', 'Prueba el mejor lomito', 'RES - Lomito', 'views/images/lomito.jpg', 0),
-(4, 'Lomo de aguja', 'Deleitate con el mejor lomo de aguja', 'RES - Lomo de aguja', 'views/images/lomo_aguja.jpg', 0),
-(5, 'Punta trasera', 'Deleitate con el mejor corte de punta traser', 'RES - Corte de primera', 'views/images/punta_trasera.jpg', 0),
-(6, 'Balona', 'Corte e segunda balona', 'RES - Balona', 'views/images/balona.jpg', 0),
-(7, 'Falda', 'Corte de segunda Res', 'RES - falda', 'views/images/falda.jpg', 0),
-(8, 'Pollito de res', 'El mejor pollo de res', 'RES - Corte de res de segunda', 'views/images/pollito_res.jpg', 0),
-(9, 'Osobuco', 'El mejor osobuco', 'Corte de tercera', 'views/images/osobuco.jpg', 0),
-(10, 'Costilla', 'Corte de tercera costilla', 'RES - Costilla', 'views/images/costilla.jpg', 0),
-(11, 'Huesos rojos', 'Lo mejor en huesos rojos', 'RES - Corte de tercera', 'views/images/huesos_rojos.jpg', 0),
-(12, 'Rabo de res', 'Lo mejor en rabo de res', 'RES - Corte de tercera', 'views/images/rabo_res.jpg', 0),
-(13, 'Costillas de cerdo', 'Lo mejor en costillas de cerdo', 'Cerdo', 'views/images/costilla_cerdo.jpg', 0),
-(14, 'Lomo', 'El mejor lomo de cerdo', 'Lomo de cerdo', 'views/images/lomo.jpg', 0),
-(15, 'Pernil', 'El mejor pernil de cerdo', 'Pernil de cerdo', 'views/images/pernil.jpg', 0),
-(16, 'Chuleta', 'Lo mejor en chuleta de cerdo', 'Corte de cerdo - Chuleta', 'views/images/chuletas.jpg', 0),
-(17, 'Pollo entero', 'El mejor pollo entero', 'Pollo entero', 'views/images/pollo_entero.jpg', 0),
-(18, 'Muslos', 'EL mejor muslo de pollo', 'Pollo - Muslo', 'views/images/muslos.jpg', 0),
-(19, 'Pechugas', 'Las mejores pechugas', 'Pechugas - Pollo', 'views/images/pechugas.jpg', 0),
-(20, 'Alitas', 'Lo mejor en alitas de pollo', 'Pollo - Alitas', 'views/images/alitas.jpg', 0);
+(1, 'Pulpón', 'Deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg', 1),
+(2, 'Pelota', 'Prueba el mejor corte de pelota', 'RES - Pelota', 'views/images/pelota.jpg', 1),
+(3, 'Lomito', 'Prueba el mejor lomito', 'RES - Lomito', 'views/images/lomito.jpg', 7),
+(4, 'Lomo de aguja', 'Deleitate con el mejor lomo de aguja', 'RES - Lomo de aguja', 'views/images/lomo_aguja.jpg', 1),
+(5, 'Punta trasera', 'Deleitate con el mejor corte de punta traser', 'RES - Corte de primera', 'views/images/punta_trasera.jpg', 1),
+(6, 'Balona', 'Corte e segunda balona', 'RES - Balona', 'views/images/balona.jpg', 2),
+(7, 'Falda', 'Corte de segunda Res', 'RES - falda', 'views/images/falda.jpg', 2),
+(8, 'Pollito de res', 'El mejor pollo de res', 'RES - Corte de res de segunda', 'views/images/pollito_res.jpg', 2),
+(9, 'Osobuco', 'El mejor osobuco', 'Corte de tercera', 'views/images/osobuco.jpg', 3),
+(10, 'Costilla', 'Corte de tercera costilla', 'RES - Costilla', 'views/images/costilla.jpg', 3),
+(11, 'Huesos rojos', 'Lo mejor en huesos rojos', 'RES - Corte de tercera', 'views/images/huesos_rojos.jpg', 3),
+(12, 'Rabo de res', 'Lo mejor en rabo de res', 'RES - Corte de tercera', 'views/images/rabo_res.jpg', 3),
+(13, 'Costillas de cerdo', 'Lo mejor en costillas de cerdo', 'Cerdo', 'views/images/costilla_cerdo.jpg', 5),
+(14, 'Lomo', 'El mejor lomo de cerdo', 'Lomo de cerdo', 'views/images/lomo.jpg', 5),
+(15, 'Pernil', 'El mejor pernil de cerdo', 'Pernil de cerdo', 'views/images/pernil.jpg', 5),
+(16, 'Chuleta', 'Lo mejor en chuleta de cerdo', 'Corte de cerdo - Chuleta', 'views/images/chuletas.jpg', 5),
+(17, 'Pollo entero', 'El mejor pollo entero', 'Pollo entero', 'views/images/pollo_entero.jpg', 4),
+(18, 'Muslos', 'EL mejor muslo de pollo', 'Pollo - Muslo', 'views/images/muslos.jpg', 4),
+(19, 'Pechugas', 'Las mejores pechugas', 'Pechugas - Pollo', 'views/images/pechugas.jpg', 4),
+(20, 'Alitas', 'Lo mejor en alitas de pollo', 'Pollo - Alitas', 'views/images/alitas.jpg', 4);
 
 -- --------------------------------------------------------
 
@@ -177,8 +177,21 @@ CREATE TABLE `precio` (
   `idprecio` int(50) NOT NULL,
   `tipo` varchar(50) NOT NULL,
   `corte` varchar(50) NOT NULL,
-  `precio` int(50) NOT NULL
+  `precio` int(50) NOT NULL,
+  `disponible` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `precio`
+--
+
+INSERT INTO `precio` (`idprecio`, `tipo`, `corte`, `precio`, `disponible`) VALUES
+(1, 'Res', 'Corte de primera', 650000, 1),
+(2, 'Res', 'Corte de segunda', 600000, 1),
+(3, 'Res', 'Corte de tercera', 550000, 1),
+(4, 'Pollo', 'Unico', 500000, 0),
+(5, 'Cerdo', 'Unico', 400000, 1),
+(6, 'Res', 'Lomito', 700000, 1);
 
 -- --------------------------------------------------------
 
@@ -315,7 +328,7 @@ ALTER TABLE `pizzatam`
 -- AUTO_INCREMENT de la tabla `precio`
 --
 ALTER TABLE `precio`
-  MODIFY `idprecio` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `idprecio` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

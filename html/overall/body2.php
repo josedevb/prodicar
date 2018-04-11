@@ -12,14 +12,16 @@ while($fila6 = mysqli_fetch_array($queryusuario)){
 
 if ( isset ($_POST['Submit']) )
   {
-  $nombre=$_POST['nombre'];
-  $apellido=$_POST['apellido'];
-  $direccion=$_POST['direccion'];
-  $numero = $_POST['numero'];
-  $pizza = $_POST['pizza'];
-  $tamano = $_POST['tamano'];
+    $nombre=$_POST['nombre'];
+    $apellido=$_POST['apellido'];
+    $direccion=$_POST['direccion'];
+    $numero = $_POST['numero'];
+    $pizza = $_POST['pizza'];
+    $razon_social = $_POST['razon_social'];
+    $referencia = $_POST['referencia'];
+    $cantidad = $_POST['cantidad'];
 
-  $queryInsertar2 = $db->query("INSERT INTO factura( idfact, iduser) values ( null, '$usuario') "); 
+  $queryInsertar2 = $db->query("INSERT INTO factura(idfact, iduser) values ( null, '$usuario') "); 
 
   $queryBuscar1 = $db->query("SELECT * FROM factura where iduser = '$usuario'");
   while($fila3 = mysqli_fetch_array($queryBuscar1)){
@@ -27,19 +29,15 @@ if ( isset ($_POST['Submit']) )
   }
 
   $queryBuscar2 = $db->query("SELECT * FROM categorias where nombre = '$pizza'");
-  while($fila4 = mysqli_fetch_array($queryBuscar2)){
+  while($fila4 = mysqli_fetch_array($queryBuscar2)) {
     $idpizza = $fila4['idcate'];  
   }
 
-  $queryInsertar = $db->query("INSERT INTO catepizz( idcatepizz, idcate, idtama, idfact) values ( null, '$idpizza', '$tamano', '$factura' ) ");
+  $queryInsertar = $db->query("INSERT INTO catepizz(idcatepizz, idcate, idtama, idfact) values ( null, '$idpizza', '$tamano', '$factura' ) ");
   $queryBuscar3 = $db->query("SELECT * FROM catepizz where idcatepizz = '$factura'");
 
   while($fila5 = mysqli_fetch_array($queryBuscar3)) {
       $idcatepizz2 = $fila5['idcatepizz'];  
-  }
-
-  foreach ($_POST['CheckBox'] as $idinteres) {
-    $queryInsertar3 = $db->query("INSERT INTO costo( idcosto, idingre, idcatepizz) values ( null, '$idinteres', '$idcatepizz2')"); 
   }
 																			
   echo "<meta http-equiv='refresh' content='0;url=views/loader/loader.html' />";
@@ -48,7 +46,7 @@ if ( isset ($_POST['Submit']) )
 <head>
 	<link rel="stylesheet" href="views/material/css/animate.min.css" type="text/css">
 	<script src="views/material/js/bootstrap.min.js"></script>
-				<link rel="stylesheet" href="views/material/css/estilo.css" type="text/css">
+  <link rel="stylesheet" href="views/material/css/estilo.css" type="text/css">
 </head>
 
 <div class="main main-raised">
@@ -63,17 +61,11 @@ if ( isset ($_POST['Submit']) )
             <!-- Inicio de la carta -->
 
 <div class="col-sm-10 col-sm-offset-1">
-<?php
-	$querycartas = $db->query("SELECT * FROM categorias");
-	$queryprecio = $db->query("SELECT * FROM pizzatam");
-		while($fila2 = mysqli_fetch_array($queryprecio))
-    {
-      $vi[] = $fila2['precio'];
-      $vi2[] = $fila2['size'];
-    }
+  <?php
+	  $querycartas = $db->query("SELECT * FROM categorias JOIN precio ON categorias.idprecio = precio.idprecio");
 		while ($fila=mysqli_fetch_array($querycartas))
 		{
-				?>
+  ?>
 		<div class="col-md-4 col-sm-6">
 			<div class="card-container">
 				<div class="card">
@@ -95,34 +87,26 @@ if ( isset ($_POST['Submit']) )
 								</div>
 						</div> <!-- end front panel -->
 						<div class="back">
-								<div class="content">
-										<div class="main">
-												<h4 class="text-center">Descripción</h4><br>
-												<p class="text-center"><?php echo $fila['descripcion'];?></p>
-												<div style="margin-top: 8%; " class="stats-container">
-														<?php
-																for ($i=0; $i < 3; $i++) {
-																echo '<div class="stats">
-																<h4>'.$vi[$i].'</h4>
-																<p>
-																	'.$vi2[$i].'
-																</p>
-																</div>';
-																}
-														?>
-
-												</div>
-
-										</div>
-								</div>
+              <div class="content">
+                <div class="main">
+                  <h4 class="text-center">Descripción</h4><br>
+                  <p class="text-center">- Tipo: <?php echo $fila['tipo'];?></p>
+                  <h6>- <?php echo $fila['corte']; ?></h6>
+                  <p>- Precio: <?php echo $fila['precio']; ?> Bs.</p>
+                </div>
+              </div>
 
 								<div style="height: 30%; margin-top:7%; background-color:#2CA8FF;" class="footer">
 									<?php
-										if(isset($_SESSION['app_id'])) {
+										if(isset($_SESSION['app_id']) && $fila['disponible']) {
 												echo '<a rel="tooltip" title="Preciona para comprar" data-placement="bottom" data-toggle="modal" data-target="#Compra'.$fila['idcate'].'" class="btn btn-info">
 													      <i class="fa fa-sign-in"></i><p style="color: white; margin-top: 15%; font-size: 15px"> Comprar</p>
                               </a>';
-										}
+										} else {
+                      echo '<a class="btn btn-info">
+                              <i class="fa fa-sign-in"></i><p style="color: white; margin-top: 15%; font-size: 15px"> No disponible</p>
+                            </a>';
+                    }
 								?>
 								</div>
 						</div>
@@ -167,7 +151,7 @@ if ( isset ($_POST['Submit']) )
                         </div>
                         <label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Producto:</label>
                         <div class="col-md-10 col-xs-10 col-sm-10">
-                            <?php echo '<input class="form-control" name="pizza" id="pizza" value="'.$fila['nombre'].'" readonly="readonly"> ';?>
+                          <?php echo '<input class="form-control" name="pizza" id="pizza" value="'.$fila['nombre'].'" readonly="readonly"> ';?>
                         </div>
 
                         <label for="" class="col-md-2 col-sm-2 col-xs-2 control-label">Razón social:</label>
