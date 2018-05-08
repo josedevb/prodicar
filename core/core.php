@@ -34,6 +34,7 @@ require('core/bin/functions/LostpassTemplate.php');
 require('core/bin/functions/PizzaTam.php');
 require('core/bin/functions/DatosPersonales.php');
 require('core/bin/functions/Compra.php');
+require('core/bin/functions/Precio.php');
 
 
 $_users = Users();
@@ -41,5 +42,6 @@ $_categorias = Categorias();
 $_pizzatam = PizzaTam();
 $_users2 = DatosPersonales();
 $_compra = Compra();
+$_precio = Precio();
 
 ?>

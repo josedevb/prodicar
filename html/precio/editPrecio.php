@@ -15,13 +15,13 @@
   <?php
   if(isset($_GET['success'])) {
     echo '<div class="alert alert-dismissible alert-success">
-      <strong>Compleato!</strong> El precio y el tamaño  han sido editados.
+      <strong>Compleato!</strong> Los datos  han sido editados.
     </div>';
   }
 
   if(isset($_GET['error'])) {
     echo '<div class="alert alert-dismissible alert-danger">
-      <strong>Error!</strong></strong> El precio y el tamaño no pueden estar vacios.
+      <strong>Error!</strong></strong> Los datos no pueden estar vacios.
     </div>';
   }
   ?>
@@ -46,18 +46,18 @@
 
           <div class="col-sm-12">
             <div class="wrapper">
-              <h1>   Editar Precio y Tamaño</h1>
+              <h1>Editar tipo, corte y tamaño</h1>
                  <div class="row cajas">
                    <div class="col-md-12">
-                    <form class="form-horizontal" action="?view=pizzatam&mode=edit2&id2=<?php echo $_GET['id2']; ?>" method="POST" enctype="application/x-www-form-urlencoded">
+                    <form class="form-horizontal" action="?view=precio&mode=edit2&id2=<?php echo $_GET['id2']; ?>" method="POST" enctype="application/x-www-form-urlencoded">
                       <fieldset>
                         <div class="form-group">
-                          <label for="inputEmail" class="col-lg-2 control-label">Modificacion de precio y tamaño de Pizzas</label>
+                          <label for="inputEmail" class="col-lg-2 control-label">Modificación de datos</label>
                             <div class="col-lg-10">
                               <table>
-                              <input type="text" class="form-control" name="size" placeholder="Tamaño para la Pizza" value="<?php echo $_pizzatam[$_GET['id2']]['size']; ?>">
-                              <input type="text" class="form-control" name="precio" placeholder="Precio de la pizza" value="<?php echo $_pizzatam[$_GET['id2']]['precio']; ?>">
-
+                              <input type="text" class="form-control" name="tipo" placeholder="Tipo" value="<?php echo $_precio[$_GET['id2']]['tipo']; ?>">
+                              <input type="text" class="form-control" name="corte" placeholder="Corte" value="<?php echo $_precio[$_GET['id2']]['corte']; ?>">
+                              <input type="text" class="form-control" name="precio" placeholder="Precio" value="<?php echo $_precio[$_GET['id2']]['precio']; ?>">
                             </table>
                             </div>
                         </div>

@@ -43,7 +43,7 @@
 
 
   <div class="wrapper">
-    <h1>   Menús del Día</h1>
+    <h1>Lista de productos</h1>
       <div class="fresh-table  full-screen-table toolbar-color-orange">
           <div class="toolbar">
                    <button id="alertBtn" class="btn btn-default">Alert</button>
@@ -60,36 +60,36 @@
             <thead>
               <tr>
                   <th data-field="id">Id</th>
-                  <th data-field="name" data-sortable="true">Nombre de la Pizza</th>
-                  <th data-sortable="true"> Tamaño de la pizza </th>
-                  <th data-soportable="true"> Precio de la Pizza  </th>
+                  <th data-field="name" data-sortable="true">Nombre del producto</th>
+                  <th data-sortable="true"> Descripcion </th>
+                  <th data-soportable="true"> Precio </th>
                   <th data-sortable="true"> Acciones  </th>
               </tr>
             </thead>
             <tbody>';
              foreach($_categorias as $id_categoria => $categoria_array ){
-             foreach($_pizzatam as $id_pizzatam => $pizzatam_array){
-
-                 $HTML .= '<tr>
-                   <td>'.$_categorias[$id_categoria]['idcate'].'</td>
-                   <td>'.$_categorias[$id_categoria]['nombre'].'</td>
-                   <td> '.$_pizzatam[$id_pizzatam]['size'].'</td>
-                   <td>'.$_pizzatam[$id_pizzatam]['precio'].'</td>
-                   <td>
-                     <div class="btn-group">
-                      <a href="#" class="btn btn-primary btn-warning">Acciones</a>
-                      <a href="#" class="btn btn-primary btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="?view=categorias&mode=edit&id='.$_categorias[$id_categoria]['idcate'].' ">Editar Nombre de Pizza</a></li>
-                        <li><a href="?view=pizzatam&mode=edit2&id2='.$_pizzatam[$id_pizzatam]['idtama'].' ">Editar Precio y Tamaño</a></li>
-                        <li><a onclick="DeleteItem(\'¿Está seguro de eliminar esta categoría?\',\'?view=categorias&mode=delete&id='.$_categorias[$id_categoria]['idcate'].'\')">Eliminar</a></li>
-                      </ul>
-                    </div>
-                    </td>
-                 </tr>';
-
-           }
-         }
+                foreach($_precio as $id_precio => $precio_array){
+									if($_categorias[$id_categoria]['idprecio'] == $_precio[$id_precio]['idprecio']){
+										$HTML .= '<tr>
+										<td>'.$_categorias[$id_categoria]['idcate'].'</td>
+										<td> '.$_categorias[$id_categoria]['nombre'].'</td>
+										<td>'.$_categorias[$id_categoria]['contiene'].'</td>
+										<td>'.$_precio[$id_precio]['precio'].'</td>
+										<td>
+											<div class="btn-group">
+											<a href="#" class="btn btn-primary btn-warning">Acciones</a>
+											<a href="#" class="btn btn-primary btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+											<ul class="dropdown-menu">
+													<li><a href="?view=categorias&mode=edit&id='.$_categorias[$id_categoria]['idcate'].' ">Editar Producto </a></li>
+													<li><a href="?view=precio&mode=edit2&id2='.$_precio[$id_precio]['idprecio'].' ">Editar Tipo, Corte o precio</a></li>
+													<li><a onclick="DeleteItem(\'¿Está seguro de eliminar esta categoría?\',\'?view=categorias&mode=delete&id='.$_categorias[$id_categoria]['idcate'].'\')">Eliminar</a></li>
+											</ul>
+											</div>
+											</td>
+									</tr>';
+								}
+							}
+            }
              $HTML .= '</tbody></table>';
            } else {
              $HTML = '<div class="alert alert-dismissible alert-info"><strong>INFORMACIÓN: </strong> Todavía no existe ninguna categoría.</div>';
@@ -97,12 +97,11 @@
 
            echo $HTML;
            ?>
-                      <a href="?view=categorias&mode=add">
-                        <button class="btn btn-simple btn-danger">Agregar Pizza Al menú
-                          <div class="ripple-container">
-                          </div>
-                        </button>
-                      </a>
+            <a href="?view=categorias&mode=add">
+            <!-- <button class="btn btn-simple btn-danger">Agregar nuevo producto
+                <div class="ripple-container"></div>
+            </button> -->
+            </a>
          </div>
          </div>
        </div>

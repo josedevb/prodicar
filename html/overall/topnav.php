@@ -37,20 +37,19 @@
 			echo '
 			<a rel="tooltip" href="?view=perfil&id='.$_SESSION['app_id'].'">'. strtoupper($_users[$_SESSION['app_id']]['user']) .'<i class="fa fa-wrench" aria-hidden="true"></i></a></li>
 			<li><a rel="tooltip" class="btn btn-simple" href="?view=categorias"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>CATEGORIAS</a></li>
-			<li><a rel="tooltip" class="btn btn-simple" href="?view=compra&id='.$_users[$_SESSION['app_id']]['iduser'].'"><i class="fa fa-shopping-cart" aria-hidden="true"></i>COMPRAS</a></li>
-			<li><a rel="tooltip" class="btn btn-simple" href="pagina2.php"><i class="fa fa-bars" aria-hidden="true"></i>CONOCENOS</a></li>
 			<li><a rel="tooltip" class="btn btn-simple" href="?view=logout"><i class="fa fa-sign-out" aria-hidden="true"></i>SALIR</a></li>
 			';
+			//<li><a rel="tooltip" class="btn btn-simple" href="?view=compra&id='.$_users[$_SESSION['app_id']]['iduser'].'"><i class="fa fa-shopping-cart" aria-hidden="true"></i>COMPRAS</a></li>
+			//<li><a rel="tooltip" class="btn btn-simple" href="pagina2.php"><i class="fa fa-bars" aria-hidden="true"></i>CONOCENOS</a></li>
 			}
 		
       else if (isset($_SESSION['app_id']) and $_users[$_SESSION['app_id']]['permisos'] >= 0) {
 
        echo '<a rel="tooltip" href="?view=perfil&id='.$_SESSION['app_id'].'">'. strtoupper($_users[$_SESSION['app_id']]['user']) .'<i class="fa fa-wrench" aria-hidden="true"></i></a></li>
-		<li><a rel="tooltip" class="btn btn-simple" href="pagina2.php"><i class="fa fa-bars" aria-hidden="true"></i>CONOCENOS</a></li>
-		 <li><a rel="tooltip" class="btn btn-simple" href="reporteCasaitaliana.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>MIS FACTURAS</a></li>
-		 <li><a rel="tooltip" class="btn btn-simple" href="?view=logout"><i class="fa fa-sign-out" aria-hidden="true"></i>SALIR</a></li>
-
+			 <li><a rel="tooltip" class="btn btn-simple" href="reporteProdicar.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>MIS FACTURAS</a></li>
+			 <li><a rel="tooltip" class="btn btn-simple" href="?view=logout"><i class="fa fa-sign-out" aria-hidden="true"></i>SALIR</a></li>
        ';
+			 //<li><a rel="tooltip" class="btn btn-simple" href="pagina2.php"><i class="fa fa-bars" aria-hidden="true"></i>CONOCENOS</a></li>
       }
    
 	

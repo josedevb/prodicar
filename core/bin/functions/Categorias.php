@@ -9,7 +9,8 @@ function Categorias() {
         'idcate' => $data['idcate'],
         'nombre' => $data['nombre'],
         'contiene' => $data['contiene'],
-        'descripcion' => $data['descripcion']
+        'descripcion' => $data['descripcion'],
+        'idprecio' => $data['idprecio'],
       );
     }
   } else {

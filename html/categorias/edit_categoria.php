@@ -21,7 +21,7 @@
 
   if(isset($_GET['error'])) {
     echo '<div class="alert alert-dismissible alert-danger">
-      <strong>Error!</strong></strong> el nombre de la Pizza no puede estar vacío.
+      <strong>Error!</strong></strong> Los datos no pueden estar vacíos.
     </div>';
   }
   ?>
@@ -44,33 +44,33 @@
     </ol>
 </div> -->
 
-          <div class="col-sm-12">
-            <div class="wrapper">
-              <h1>   Editar Nombre de Pizza</h1>
-                 <div class="row cajas">
-                   <div class="col-md-12">
-                    <form class="form-horizontal" action="?view=categorias&mode=edit&id=<?php echo $_GET['id']; ?>" method="POST" enctype="application/x-www-form-urlencoded">
-                      <fieldset>
-                        <div class="form-group">
-                          <label for="inputEmail" class="col-lg-2 control-label">Modificacion de Pizzas</label>
-                            <div class="col-lg-10">
-                              <table>
-                              <input type="text" class="form-control" name="nombre" placeholder="Nombre para la Pizza" value="<?php echo $_categorias[$_GET['id']]['nombre']; ?>">
-                                <input type="text" class="form-control" name="contiene" placeholder="Contenido para la Pizza" value="<?php echo $_categorias[$_GET['id']]['contiene']; ?>">
-                                  <input type="text" class="form-control" name="descripcion" placeholder="Descripcion para la Pizza" value="<?php echo $_categorias[$_GET['id']]['descripcion']; ?>">
-                            </table>
-                            </div>
+      <div class="col-sm-12">
+        <div class="wrapper">
+          <h1>   Editar Producto</h1>
+              <div class="row cajas">
+                <div class="col-md-12">
+                <form class="form-horizontal" action="?view=categorias&mode=edit&id=<?php echo $_GET['id']; ?>" method="POST" enctype="application/x-www-form-urlencoded">
+                  <fieldset>
+                    <div class="form-group">
+                      <label for="inputEmail" class="col-lg-2 control-label">Modificar informacion</label>
+                        <div class="col-lg-10">
+                        <table>
+                          <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?php echo $_categorias[$_GET['id']]['nombre']; ?>">
+                          <input type="text" class="form-control" name="contiene" placeholder="Contenido" value="<?php echo $_categorias[$_GET['id']]['contiene']; ?>">
+                          <input type="text" class="form-control" name="descripcion" placeholder="Descripcion" value="<?php echo $_categorias[$_GET['id']]['descripcion']; ?>">
+                        </table>
                         </div>
-                        <div class="form-group">
-                          <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Resetear</button>
-                            <button type="submit" class="btn btn-primary">Editar</button>
-                          </div>
-                        </div>
-                      </fieldset>
-                    </form>
-                  </div>
-                </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Resetear</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>

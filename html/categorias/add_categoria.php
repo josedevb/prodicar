@@ -48,11 +48,11 @@
           <form class="form-horizontal" action="?view=categorias&mode=add" method="POST" enctype="application/x-www-form-urlencoded">
             <fieldset>
               <div class="form-group">
-                <label for="inputEmail" class="col-lg-2 control-label">Categoría</label>
+                <label for="inputEmail" class="col-lg-2 control-label">Producto</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" name="nombre" placeholder="Nombre para la pizza">
-                  <input type="text" class="form-control" name="contiene" placeholder="Contiene la pizza ">
-                  <input type="text" class="form-control" name="descripcion" placeholder="Descripcion de la pizza">
+                  <input type="text" class="form-control" name="nombre" placeholder="Nombre para el producto">
+                  <input type="text" class="form-control" name="contiene" placeholder="Contiene el producto ">
+                  <input type="text" class="form-control" name="descripcion" placeholder="Descripcion del producto">
 
            
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2018 a las 14:36:40
+-- Tiempo de generación: 08-05-2018 a las 22:30:40
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -42,8 +42,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idcate`, `nombre`, `contiene`, `descripcion`, `imagen`, `idprecio`) VALUES
-(1, 'Pulpón', 'Deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg', 1),
-(2, 'Pelota', 'Prueba el mejor corte de pelota', 'RES - Pelota', 'views/images/pelota.jpg', 1),
+(1, 'Pulpón', 'deleitate con el mejor corte de res', 'RES - Corte de primera', 'views/images/pulpon.jpg', 1),
+(2, 'Pelota', 'Prueba el mejor corte de pelotax', 'RES - Pelota', 'views/images/pelota.jpg', 1),
 (3, 'Lomito', 'Prueba el mejor lomito', 'RES - Lomito', 'views/images/lomito.jpg', 7),
 (4, 'Lomo de aguja', 'Deleitate con el mejor lomo de aguja', 'RES - Lomo de aguja', 'views/images/lomo_aguja.jpg', 1),
 (5, 'Punta trasera', 'Deleitate con el mejor corte de punta traser', 'RES - Corte de primera', 'views/images/punta_trasera.jpg', 1),
@@ -79,18 +79,6 @@ CREATE TABLE `catepizz` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `costo`
---
-
-CREATE TABLE `costo` (
-  `idcosto` bigint(255) UNSIGNED NOT NULL,
-  `idingre` int(255) NOT NULL,
-  `idcatepizz` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `datospersonales`
 --
 
@@ -120,8 +108,22 @@ INSERT INTO `datospersonales` (`iddatosp`, `nombre`, `apellido`, `direccion`, `n
 
 CREATE TABLE `factura` (
   `idfact` bigint(255) UNSIGNED NOT NULL,
+  `idcate` int(50) NOT NULL,
+  `referencia` varchar(100) NOT NULL,
+  `cantidad` int(10) NOT NULL,
+  `fecha` varchar(20) NOT NULL,
+  `hora` varchar(20) NOT NULL,
   `iduser` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`idfact`, `idcate`, `referencia`, `cantidad`, `fecha`, `hora`, `iduser`) VALUES
+(1, 4, 'ref11', 1, '18-05-07', '04:14:20', 1),
+(2, 2, 'fe', 1, '18-05-07', '04:21:48', 1),
+(3, 2, 'fe', 1, '18-05-07', '04:21:48', 1);
 
 -- --------------------------------------------------------
 
@@ -153,19 +155,8 @@ INSERT INTO `ingrediente` (`idingre`, `nombre`, `costo`) VALUES
 --
 
 CREATE TABLE `pizzatam` (
-  `idtama` bigint(255) UNSIGNED NOT NULL,
-  `size` varchar(50) NOT NULL,
-  `precio` varchar(30) NOT NULL
+  `idpizzatam` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `pizzatam`
---
-
-INSERT INTO `pizzatam` (`idtama`, `size`, `precio`) VALUES
-(1, 'Corte de primera', '5000'),
-(2, 'Corte de segunda', '4000'),
-(3, 'Corte de tercera', '3000');
 
 -- --------------------------------------------------------
 
@@ -237,12 +228,6 @@ ALTER TABLE `catepizz`
   ADD PRIMARY KEY (`idcatepizz`);
 
 --
--- Indices de la tabla `costo`
---
-ALTER TABLE `costo`
-  ADD PRIMARY KEY (`idcosto`);
-
---
 -- Indices de la tabla `datospersonales`
 --
 ALTER TABLE `datospersonales`
@@ -264,7 +249,7 @@ ALTER TABLE `ingrediente`
 -- Indices de la tabla `pizzatam`
 --
 ALTER TABLE `pizzatam`
-  ADD PRIMARY KEY (`idtama`);
+  ADD PRIMARY KEY (`idpizzatam`);
 
 --
 -- Indices de la tabla `precio`
@@ -295,12 +280,6 @@ ALTER TABLE `catepizz`
   MODIFY `idcatepizz` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `costo`
---
-ALTER TABLE `costo`
-  MODIFY `idcosto` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `datospersonales`
 --
 ALTER TABLE `datospersonales`
@@ -310,7 +289,7 @@ ALTER TABLE `datospersonales`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `idfact` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idfact` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `ingrediente`
@@ -322,7 +301,7 @@ ALTER TABLE `ingrediente`
 -- AUTO_INCREMENT de la tabla `pizzatam`
 --
 ALTER TABLE `pizzatam`
-  MODIFY `idtama` bigint(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idpizzatam` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `precio`

@@ -20,6 +20,7 @@ class Categorias {
         $this->nombre = $this->db->real_escape_string($_POST['nombre']);
         $this->contiene = $this->db->real_escape_string($_POST['contiene']);
         $this->descripcion = $this->db->real_escape_string($_POST['descripcion']);
+        $this->idprecio = $this->db->real_escape_string($_POST['idprecio']);
       }
     } catch(Exception $error) {
       header('location: '.$url .$error->getMessage());

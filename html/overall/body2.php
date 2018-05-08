@@ -16,30 +16,21 @@ if ( isset ($_POST['Submit']) )
     $apellido=$_POST['apellido'];
     $direccion=$_POST['direccion'];
     $numero = $_POST['numero'];
-    $pizza = $_POST['pizza'];
+    $categoria = $_POST['pizza'];
     $razon_social = $_POST['razon_social'];
     $referencia = $_POST['referencia'];
     $cantidad = $_POST['cantidad'];
+    $fecha = date('y-m-d');
+    $hora = date('H:i:s');
 
-  $queryInsertar2 = $db->query("INSERT INTO factura(idfact, iduser) values ( null, '$usuario') "); 
-
-  $queryBuscar1 = $db->query("SELECT * FROM factura where iduser = '$usuario'");
-  while($fila3 = mysqli_fetch_array($queryBuscar1)){
-    $factura = $fila3['idfact'];  
-  }
-
-  $queryBuscar2 = $db->query("SELECT * FROM categorias where nombre = '$pizza'");
+  $queryBuscar2 = $db->query("SELECT * FROM categorias where nombre = '$categoria'");
   while($fila4 = mysqli_fetch_array($queryBuscar2)) {
-    $idpizza = $fila4['idcate'];  
+    $idcategoria = $fila4['idcate'];
   }
 
-  $queryInsertar = $db->query("INSERT INTO catepizz(idcatepizz, idcate, idtama, idfact) values ( null, '$idpizza', '$tamano', '$factura' ) ");
-  $queryBuscar3 = $db->query("SELECT * FROM catepizz where idcatepizz = '$factura'");
-
-  while($fila5 = mysqli_fetch_array($queryBuscar3)) {
-      $idcatepizz2 = $fila5['idcatepizz'];  
-  }
-																			
+  $queryInsertar = $db->query(
+    "INSERT INTO factura(idfact, idcate, referencia, cantidad, fecha, hora, iduser)
+     VALUES ( null, $idcategoria, '$referencia', '$cantidad', '$fecha', '$hora', $usuario ) ");								
   echo "<meta http-equiv='refresh' content='0;url=views/loader/loader.html' />";
 }?> 
 
@@ -54,8 +45,8 @@ if ( isset ($_POST['Submit']) )
 		<div class="section text-center section-landing">
 			<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-							<h2 class="title">Menú </h2>
-							<h5 class="description">Conoce nuestro Menú.</h5>
+							<h2 class="title">Productos </h2>
+							<h5 class="description">Conoce nuestros productos.</h5>
 					</div>
 			</div>
             <!-- Inicio de la carta -->
