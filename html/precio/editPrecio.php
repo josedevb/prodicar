@@ -46,7 +46,7 @@
 
           <div class="col-sm-12">
             <div class="wrapper">
-              <h1>Editar tipo, corte y tamaño</h1>
+              <h2>Editar tipo, corte y precio</h2>
                  <div class="row cajas">
                    <div class="col-md-12">
                     <form class="form-horizontal" action="?view=precio&mode=edit2&id2=<?php echo $_GET['id2']; ?>" method="POST" enctype="application/x-www-form-urlencoded">

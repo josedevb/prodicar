@@ -5,14 +5,16 @@ require('core/core.php');
 //$conexion=mysqli_connect("localhost","tesis_charcuteri","tesis_tesis","ocrendbb");
 $conexion = mysqli_connect("localhost", "root", "", "ocrendbb");
 $usuario = $_SESSION['app_id'];
-
-$registros = mysqli_query($conexion,"SELECT *, datospersonales.nombre as usernombre, categorias.nombre as catenombre 
-                          FROM datospersonales
-                          INNER JOIN users ON datospersonales.iduser = users.iduser
-                          INNER JOIN factura ON users.iduser = factura.iduser
-                          INNER JOIN categorias ON factura.idcate = categorias.idcate
-                          INNER JOIN precio ON precio.idprecio = categorias.idprecio
-                          WHERE users.iduser = $usuario") or die("Problemas con la conexión");
+$fechaini = $_GET['fechaini'];
+$fechafin = $_GET['fechafin'];
+$query = "SELECT *, datospersonales.nombre as usernombre, categorias.nombre as catenombre 
+FROM datospersonales
+INNER JOIN users ON datospersonales.iduser = users.iduser
+INNER JOIN factura ON users.iduser = factura.iduser
+INNER JOIN categorias ON factura.idcate = categorias.idcate
+INNER JOIN precio ON precio.idprecio = categorias.idprecio
+WHERE fecha BETWEEN '$fechaini' AND '$fechafin'";
+$registros = mysqli_query($conexion, $query) or die("Problemas con la conexión");
 
 ini_set('date.timezone', 'America/Caracas');
 $time3 = date('H:i:s', time());

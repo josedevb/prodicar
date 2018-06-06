@@ -1,127 +1,178 @@
  <?php include(HTML_DIR . 'overall/header.php'); ?>
 <head>
- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
- <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
- </head>
- <body class="index-page">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+</head>
+<body class="index-page">
 
- <?php include(HTML_DIR . '/overall/topnav.php'); 
+	<?php include(HTML_DIR . '/overall/topnav.php'); 
 
-  $usuario = $_SESSION['app_id'];
-
-
- ?>
-
+		$usuario = $_SESSION['app_id'];
+	?>
 
   <div class="main main-raised">
-          <div class="container">
-              <div class="section text-center section-landing">
+		<div class="container">
+			<div class="section text-center section-landing">
+			<?php
+				if(isset($_GET['success'])) {
+					echo '<div class="alert alert-dismissible alert-success">
+						<strong>Activado!</strong> tu usuario ha sido activado correctamente.
+					</div>';
+				}
 
-
-   <?php
-   if(isset($_GET['success'])) {
-     echo '<div class="alert alert-dismissible alert-success">
-       <strong>Activado!</strong> tu usuario ha sido activado correctamente.
-     </div>';
-   }
-
-   if(isset($_GET['error'])) {
-     echo '<div class="alert alert-dismissible alert-danger">
-       <strong>Error!</strong></strong> no se ha podido activar tu usuario.
-     </div>';
-   }
-   ?>
-
- <!-- <div class="row container">
-    <div class="pull-right">
-        <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
-            <a class="mbr-buttons__btn btn btn-danger active" href="?view=categorias">GESTIONAR CATEGORÍAS</a>
-        </li></ul></div>
-        <div class="mbr-navbar__column"><ul class="mbr-navbar__items mbr-navbar__items--right mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-inverse mbr-buttons--active"><li class="mbr-navbar__item">
-            <a class="mbr-buttons__btn btn btn-danger" href="?view=categorias&mode=add">CREAR CATEGORÍA</a>
-        </li></ul></div>
-      </div>
-
-  <button class="btn btn-danger" type="button" name="button"><a href="?view=index">
-    <i class="material-icons">shopping_cart</i>Categorías</a>
-  </button> -->
-
+				if(isset($_GET['error'])) {
+					echo '<div class="alert alert-dismissible alert-danger">
+						<strong>Error!</strong></strong> no se ha podido activar tu usuario.
+					</div>';
+				}
+			?>
 
   <div class="wrapper">
-    <h1>  Compras realizadas para facturar</h1>
-      <div class="fresh-table  full-screen-table toolbar-color-orange">
-        
-       <div class="row cajas">
-         <div class="col-md-12">
-           <!-- <th data-sortable="true"> Ingredientes extras </th>
-           <th data-sortable="true"> Costo Ingredientes extras </th>
-         Si queremos agregar ingredientes metemos esto en el for each -->
-           <?php
+		<div class="row cajas">
+			<div class="col-md-12">
+				<div style="text-align:center;">
+					<form action="" onsubmit="return validateForm()" method="post">
+						<h1>Filtrar Compras por fecha</h1>
+							<label for="de">DE</label>
+							<input class="form-control" type="date" name="de" id="de">
+							<label for="para">HASTA</label>
+							<input class="form-control" type="date" name="para" id="para">
+							<button type="submit" class="btn btn-success">Filtrar</button>
+					</form>
+				</div>
+				<?php 
+				if(isset($_POST['de']) && $_POST['para']) {
+					$fechaini = substr($_POST['de'], 2, 8);
+					$fechafin = substr($_POST['para'], 2, 8);
+					$HTML2 = '
+					<a type="button" class="btn btn-success" href="./reporteProdicarFecha.php?fechaini='.$fechaini.'&fechafin='.$fechafin.'">
+						Mostrar En PDF
+					</a>
+					<div class="fresh-table  full-screen-table toolbar-color-orange">
+						<table id="fresh-table" class="table">
+						<thead>
+							<tr>
+								<th data-field="id">Id</th>
+								<th data-field="name" data-sortable="true">Usuario </th>
+								<th data-sortable="true"> Producto </th>
+								<th data-sortable="true"> Referencia </th>
+								<th data-sortable="true"> Cantidad  </th>
+								<th data-sortable="true"> Precio total  </th>
+								<th data-sortable="true"> Fecha  </th>
+							</tr>
+						</thead>
+						<tbody>';
+						$db = new Conexion();
+						$query = "SELECT * FROM factura 
+											inner join categorias 
+											on categorias.idcate = factura.idcate 
+											inner join users
+											on users.iduser = factura.iduser
+											inner join precio
+											on precio.idprecio = categorias.idprecio	
+											WHERE fecha BETWEEN '$fechaini' AND '$fechafin'";
 
-           if(false != $_compra) {
-            $HTML = '<table id="fresh-table" class="table">
-            <thead>
-              <tr>
-                  <th data-field="id">Id</th>
-                  <th data-field="name" data-sortable="true">Nombre de la Pizza</th>
-                  <th data-sortable="true"> Tamaño de la pizza </th>
-                  <th data-soportable="true"> Precio de la Pizza  </th>
-                  <th data-soportable="true"> Ingrediente de la Pizza  </th>
-                  <th data-soportable="true"> Pago total de la pizza  </th>
-                  <th data-sortable="true"> Acciones  </th>
-              </tr>
-            </thead>
-            <tbody>';
+						$querybuscarcategoria2 = $db->query($query);
+						$fila3 = mysqli_fetch_assoc($querybuscarcategoria2);
+							if($fila3) {
+								while($fila3 = mysqli_fetch_array($querybuscarcategoria2)) {
+									$HTML2 .= '<tr>
+											<td>'.$fila3['idfact'].'</td>
+											<td>'.$fila3['user'].'</td>
+											<td>'.$fila3['nombre'].'</td>
+										<td>'.$fila3['referencia'].'</td>
+										<td>'.$fila3['cantidad'].'</td>
+										<td>'.$fila3['precio'] * $fila3['cantidad'].'</td>
+										<td>'.$fila3['fecha'].'</td>
+									</tr>';
+								}
+								$HTML2 .= '</tbody>
+									</table>
+									</div>';
+								echo $HTML2;
+							} else {
+								$HTML2 = '<div class="alert alert-dismissible alert-info"><strong>INFORMACIÓN: </strong> Todavía no existe ninguna Compra.</div>';
+								echo $HTML2;
+							}
+					}
 
-          
-              foreach($_compra as $id_compra => $compra_array ){
-             // foreach($_pizzatam as $id_pizzatam => $pizzatam_array){
-              $db = new Conexion();
-            $querybuscarcategoria = $db->query("SELECT categorias.nombre FROM categorias inner join catepizz on categorias.idcate = catepizz.idcate where catepizz.idcatepizz = ".$_compra[$id_compra]['idcatepizz']);
-            $fila=mysqli_fetch_array($querybuscarcategoria);
-            $querybuscarcategoria2 = $db->query("SELECT pizzatam.size, pizzatam.precio FROM pizzatam inner join catepizz on pizzatam.idtama = catepizz.idtama where catepizz.idcatepizz = ".$_compra[$id_compra]['idcatepizz']);
-            $fila2=mysqli_fetch_array($querybuscarcategoria2);
-            $querybuscarcategoria3 = $db->query("SELECT ingrediente.nombre as nombre2 FROM pizzatam inner join catepizz on pizzatam.idtama= catepizz.idtama inner join costo on catepizz.idcatepizz = costo.idcatepizz inner join ingrediente on costo.idingre = ingrediente.idingre where catepizz.idcatepizz = ".$_compra[$id_compra]['idcatepizz']);
-            $ll='';
-            while (($fila3=mysqli_fetch_array($querybuscarcategoria3))){
-              $ll.=''.$fila3['nombre2'].'-';
-            }
-            $querybuscarcategoria4 = $db->query("SELECT (sum(ingrediente.costo)+ pizzatam.precio) as total, ingrediente.nombre as nombre2 FROM pizzatam inner join catepizz on pizzatam.idtama= catepizz.idtama inner join costo on catepizz.idcatepizz = costo.idcatepizz inner join ingrediente on costo.idingre = ingrediente.idingre where catepizz.idcatepizz = ".$_compra[$id_compra]['idcatepizz']);
-            $fila4=mysqli_fetch_array($querybuscarcategoria4);
+				?>
 
-                  if ($fila4['total'] <= $fila2['precio'])  {
-                      $supertotal = $fila2['precio'];
-                  }elseif ($fila4['total'] > $fila2['precio']) {
-                      $supertotal = $fila4['total'];
-                  }
+			<h1>Compras realizadas</h1>
+			<div class="fresh-table  full-screen-table toolbar-color-orange">
+				<?php
 
-                 $HTML .= '<tr>
-                    <td>'.$_compra[$id_compra]['idcatepizz'].'</td>
-                   <td>'.$fila['nombre'].'</td>
-                   <td>'.$fila2['size'].'</td>
-                   <td>'.$fila2['precio'].'</td>
-                   <td>'.$ll.'</td>
-                   <td>'.$supertotal.'</td>
-                   <td>
-                        -
-                    </td>
-                 </tr>';
+				if(false != $_compra) {
+					$HTML = '<table id="fresh-table" class="table">
+					<thead>
+						<tr>
+								<th data-field="id">Id</th>
+								<th data-field="name" data-sortable="true">Usuario </th>
+								<th data-sortable="true"> Producto </th>
+								<th data-sortable="true"> Referencia </th>
+								<th data-sortable="true"> Cantidad  </th>
+								<th data-sortable="true"> Precio total  </th>
+								<th data-sortable="true"> Fecha  </th>
+						</tr>
+					</thead>
+					<tbody>';
 
-           }
-         // }
-             $HTML .= '</tbody></table>';
-           } else {
-             $HTML = '<div class="alert alert-dismissible alert-info"><strong>INFORMACIÓN: </strong> Todavía no existe ninguna Compra.</div>';
-           }
+						
+						foreach($_compra as $id_compra => $compra_array ){
+							// foreach($_pizzatam as $id_pizzatam => $pizzatam_array){
+								$db = new Conexion();
+							$querybuscarcategoria = $db->query(
+									"SELECT * FROM factura 
+									inner join categorias 
+									on categorias.idcate = factura.idcate 
+									inner join users
+									on users.iduser = factura.iduser
+									inner join precio
+									on precio.idprecio = categorias.idprecio
+									where factura.idfact = ".$_compra[$id_compra]['idfact']
+								);
+							$fila = mysqli_fetch_array($querybuscarcategoria);
+							// $querybuscarcategoria2 = $db->query("SELECT pizzatam.size, pizzatam.precio FROM pizzatam inner join catepizz on pizzatam.idtama = catepizz.idtama where catepizz.idfact = ".$_compra[$id_compra]['idfact']);
+							// $fila2=mysqli_fetch_array($querybuscarcategoria2);
+							// $querybuscarcategoria3 = $db->query("SELECT ingrediente.nombre as nombre2 FROM pizzatam inner join catepizz on pizzatam.idtama= catepizz.idtama inner join costo on catepizz.idfact = costo.idfact inner join ingrediente on costo.idingre = ingrediente.idingre where catepizz.idfact = ".$_compra[$id_compra]['idfact']);
+							// $ll='';
+							// while (($fila3=mysqli_fetch_array($querybuscarcategoria3))){
+							//   $ll.=''.$fila3['nombre2'].'-';
+							// }
+							// $querybuscarcategoria4 = $db->query("SELECT (sum(ingrediente.costo)+ pizzatam.precio) as total, ingrediente.nombre as nombre2 FROM pizzatam inner join catepizz on pizzatam.idtama= catepizz.idtama inner join costo on catepizz.idfact = costo.idfact inner join ingrediente on costo.idingre = ingrediente.idingre where catepizz.idfact = ".$_compra[$id_compra]['idfact']);
+							// $fila4=mysqli_fetch_array($fila);
 
-           echo $HTML;
-           ?>
-                      <a href="?view=index">
-                        <button class="btn btn-simple btn-danger">Agregar otra compra
-                          <div class="ripple-container">
-                          </div>
-                        </button>
-                      </a>
+							//       if ($fila4['total'] <= $fila2['precio'])  {
+							//           $supertotal = $fila2['precio'];
+							//       }elseif ($fila4['total'] > $fila2['precio']) {
+							//           $supertotal = $fila4['total'];
+							//       }
+
+									$HTML .= '<tr>
+											<td>'.$_compra[$id_compra]['idfact'].'</td>
+											<td>'.$fila['user'].'</td>
+											<td>'.$fila['nombre'].'</td>
+										<td>'.$fila['referencia'].'</td>
+										<td>'.$fila['cantidad'].'</td>
+										<td>'.$fila['precio'] * $fila['cantidad'].'</td>
+										<td>'.$fila['fecha'].'</td>
+									</tr>';
+
+						}
+					// }
+							$HTML .= '</tbody></table>';
+						} else {
+							$HTML = '<div class="alert alert-dismissible alert-info"><strong>INFORMACIÓN: </strong> Todavía no existe ninguna Compra.</div>';
+						}
+
+						echo $HTML;
+						?>
+            <!-- <a href="?view=index">
+            <button class="btn btn-simple btn-danger">Agregar otra compra
+                <div class="ripple-container">
+                </div>
+            </button>
+            </a> -->
          </div>
          </div>
        </div>
@@ -204,6 +255,14 @@
       }
 
   </script>
-
+<script>
+  function validateForm() {
+    var de =  document.getElementById('de').value;
+    var para =  document.getElementById('para').value;
+    if(de <= para) return true;
+    alert("Las fecha final debe ser mayor a la fecha de inicio");
+    return false;
+  }
+</script>
  </body>
  </html>
